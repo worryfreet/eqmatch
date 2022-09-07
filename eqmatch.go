@@ -1,7 +1,6 @@
 package eqmatch
 
 import (
-	"errors"
 	"fmt"
 	"github.com/xuri/excelize/v2"
 	"math/rand"
@@ -59,7 +58,7 @@ func (ps Persons) convert() error {
 	}
 	for _, list := range typeMap {
 		if len(list) <= ps.Num {
-			return errors.New("导入名单中人员数量和分配名额不匹配")
+			return ErrMoreNum
 		}
 	}
 	// 核心代码---随机数组, 多协程快速检索
